@@ -1,0 +1,5 @@
+streamlit==1.36.0
+llama-index==0.10.55
+llama-index-llms-ollama==0.2.2
+llama-index-embeddings-ollama==0.1.2
+PyPDF2==3.0.1
