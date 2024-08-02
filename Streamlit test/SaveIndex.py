@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import pickle
+import random
 
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.embeddings.ollama import OllamaEmbedding
@@ -15,7 +16,7 @@ def save_index_to_file(index, file_path):
 def Document():
     with st.form("Document_Form"):
         DocumentDirectory = st.file_uploader("Choose document(s)",type=['pdf','txt'])
-        IndexDirectory = st.text_input("Directory to save index file")
+        #IndexDirectory = st.text_input("Directory to save index file")
         submitted = st.form_submit_button("Index")
         if submitted:
             file_details = {"FileName":DocumentDirectory.name,"FileType":DocumentDirectory.type}
@@ -25,7 +26,9 @@ def Document():
             documents = SimpleDirectoryReader("tempDir").load_data()
             #documents
 
-            index_file_path = IndexDirectory + r"\\index.pkl"
+            index_file_name = ''.join(str(random.randint(0, 9)) for _ in range(5))
+
+            index_file_path = r"Index Files\\" + index_file_name + r".pkl"
 
             Settings.embed_model = OllamaEmbedding(
                 model_name="nomic-embed-text",
