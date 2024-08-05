@@ -11,10 +11,15 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 def save_index_to_file(index, file_path):
     with open(file_path, 'wb') as f:
         pickle.dump(index, f)
-        
+
+with st.sidebar:
+    Create = st.checkbox("Create new bot")
+    Edit = st.checkbox("Edit existing bot")
 
 def Document():
     with st.form("Document_Form"):
+        Bot_Name = st.text_input("Bot name:")
+        Bot_Description = st.text_input("Bot description:")
         DocumentDirectory = st.file_uploader("Choose document(s)",type=['pdf','txt'])
         #IndexDirectory = st.text_input("Directory to save index file")
         submitted = st.form_submit_button("Index")
@@ -57,4 +62,5 @@ def save_uploadedfile(uploadedfile):
 
 
 # DocOrIndex()
-Document()
+if Create:
+    Document()
