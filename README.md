@@ -1,0 +1,1 @@
+This project uses two separate programs together. The first program is where you can create a chatbot, customizing its knowledge base and its behavior. Once you save the chatbot to your computer, the second program is used to load the chatbot. Right now, you can only create chatbots using PDF files for the knowledgebase.
